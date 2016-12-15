@@ -17,8 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>oatmeal-common</artifactId>
-			<version>${project.version}</version>
+			<artifactId>oatmeal-root</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.jodd</groupId>
@@ -29,29 +28,25 @@
 			<artifactId>jodd-mail</artifactId>
 		</dependency>
 		<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-upload</artifactId>
-				
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-bean</artifactId>
-				
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-log</artifactId>
-				
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-props</artifactId>
-				
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-json</artifactId>
-				
-			</dependency>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd-upload</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd-bean</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd-log</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd-props</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd-json</artifactId>
+		</dependency>
+
 	</dependencies>
 </project>
