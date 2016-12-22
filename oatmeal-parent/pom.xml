@@ -15,6 +15,7 @@
 		<module>oatmeal-jodd</module>
     <module>oatmeal-poi</module>
     <module>oatmeal-root</module>
+    <module>oatmeal-test</module>
   </modules>
 
 	<properties>
@@ -66,7 +67,7 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-web</artifactId>
-				<version>${pring.version}</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>

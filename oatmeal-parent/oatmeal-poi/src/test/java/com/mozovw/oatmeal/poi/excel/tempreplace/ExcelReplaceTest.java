@@ -7,18 +7,15 @@ import org.junit.Test;
 
 import com.mozovw.oatmeal.poi.excel.tempreplace.entity.ExcelHandleDataVO;
 import com.mozovw.oatmeal.poi.excel.tempreplace.util.ExcelTempHandleUtil;
+import com.mozovw.oatmeal.root.test.BaseTestCase;
 
-//参考地址：http://yaoh6688.iteye.com/blog/1152273
-//@RunWith(JUnit4ClassRunner.class)
-public class ExcelReplaceTest {
+public class ExcelReplaceTest extends BaseTestCase{
 
 	@Test
-	public void test() {
+	public void testTeplaceModel() {
 
 		List<ExcelHandleDataVO> datas = new ArrayList<ExcelHandleDataVO>();
 		ExcelHandleDataVO vo1 = new ExcelHandleDataVO();
-//		vo1.setRow(0);
-//		vo1.setColumn(2);
 		vo1.setKey("dd");
 		vo1.setValue("XXX有限公司");
 		ExcelHandleDataVO vo2 = new ExcelHandleDataVO();
@@ -32,5 +29,19 @@ public class ExcelReplaceTest {
 						datas,
 						"src/test/resources/com/mozovw/oatmeal/poi/excel/tempreplace/excel/2k7.xlsx",
 						"src/test/resources/com/mozovw/oatmeal/poi/excel/tempreplace/excel/2k7-2.xlsx");
+	}
+
+	@Test
+	public void testTeplaceModel2() {
+		List<ExcelHandleDataVO> datas = new ArrayList<ExcelHandleDataVO>();
+		ExcelHandleDataVO vo1 = new ExcelHandleDataVO();
+		vo1.setKey("修订");
+		vo1.setValue("新增");
+		datas.add(vo1);
+		ExcelTempHandleUtil
+				.replaceModel(
+						datas,
+						"src/test/resources/com/mozovw/oatmeal/poi/excel/tempreplace/excel/aa.xlsx",
+						"src/test/resources/com/mozovw/oatmeal/poi/excel/tempreplace/excel/bb.xlsx");
 	}
 }

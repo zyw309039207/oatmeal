@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.mozovw.oatmeal.test.llr.tempout.dao.TempOutDao">
+
+	<select id="queryAllTempDate" resultMap="meTempDataEntity"
+		parameterType="string">
+		SELECT
+		t.llr_code llrCode,
+		t.title title,
+		t.case_name caseName,
+		b.Employee_No employeeNo,
+		b.USR_NAME userName,
+		o.chinese_name orgName,
+		b.USR_TEL tel,
+		DATE_FORMAT(b.create_date, '%Y-%m-%d') createDate,
+		DATE_FORMAT(
+		t.occurrence_time,
+		'%Y-%m-%d'
+		) occurDate,
+		ddd.chinese_name sourceName,
+		t.project_id,
+		p.chinese_name projectName,
+		t.parts_code partCode,
+		t.parts_name partName,
+		s.chinese_name pointName,
+		t.case_description caseDescription,
+		m.cause_analysis causeAnalysis,
+		m.tmp_measures tmpMeasures,
+		m.long_term_measure longTermMeasure,
+		m.directive directive,
+		CASE
+		WHEN v.is_verify = 0 THEN
+		'是'
+		ELSE
+		'否'
+		END isVerify,
+		v.charge,
+		u.USR_NAME directorName,
+		ooo.chinese_name deptName,
+		v.verify_mode,
+		dd.chinese_name verifyModeName,
+		v.type,
+		d.chinese_name typeName,
+		v.quota,
+		v.target_effect targetEffect,
+		DATE_FORMAT(v.plan_time, '%Y-%m-%d') planDate,
+		DATE_FORMAT(v.actual_time, '%Y-%m-%d') actualDate,
+		oo.knowledge_id,
+		kk.chinese_name docType,
+		oo.doc_name docName,
+		oo.doc_code docCode,
+		oo.output_mode,
+		dddd.chinese_name outputModeName,
+		oo.content,
+		oo.charge,
+		uu.USR_NAME vDirectorName,
+		DATE_FORMAT(
+		oo.plan_completion_time,
+		'%Y-%m-%d'
+		) planCompletionTime,
+		DATE_FORMAT(
+		oo.actual_completion_time,
+		'%Y-%m-%d'
+		) actualCompletionTime
+		FROM
+		tt_basics_llr t
+		LEFT JOIN tm_bas_users b ON t.create_by = b.ID
+		LEFT JOIN tm_org o ON o.org_id = t.org_id
+		LEFT JOIN tt_project p ON p.project_id = t.project_id
+		LEFT JOIN tt_stage s ON s.stage_id = t.point_id
+		LEFT JOIN tt_analysis_summary_me m ON m.llr_id = t.llr_id
+		LEFT JOIN tm_system_dictionary ddd ON ddd.dic_no = t.source_id
+		AND ddd.dic_type = 'me_source_mode'
+		LEFT JOIN tt_me_verify v ON v.llr_id = t.llr_id
+		JOIN tm_system_dictionary d ON d.dic_no = v.type
+		AND d.dic_type = 'me_Verify_type'
+		JOIN tm_system_dictionary dd ON dd.dic_no = v.verify_mode
+		AND dd.dic_type = 'me_erification_mode'
+		JOIN tm_bas_users u ON u.id = v.charge
+		JOIN tm_org ooo ON ooo.org_id = v.dept_id
+		LEFT JOIN tt_knowledge_output oo ON oo.llr_id = t.llr_id
+		JOIN tt_knowledge kk ON kk.id = oo.knowledge_id
+		JOIN tm_system_dictionary dddd ON dddd.dic_no = oo.output_mode
+		AND dddd.dic_type = 'output_mode'
+		JOIN tm_bas_users uu ON uu.id = oo.charge
+		WHERE
+		t.llr_code = 'LLR-MEI-14653'
+	</select>
+	<resultMap id="meTempDataEntity"
+		type="com.mozovw.oatmeal.test.llr.tempout.entity.MeTempDataEntity">
+		<result property="llrCode" column="llrCode" />
+		<result property="title" column="title" />
+		<result property="caseName" column="caseName" />
+		<result property="employeeNo" column="employeeNo" />
+		<result property="userName" column="userName" />
+		<result property="orgName" column="orgName" />
+		<result property="tel" column="tel" />
+		<result property="createDate" column="createDate" />
+		<result property="occurDate" column="occurDate" />
+		<result property="sourceName" column="sourceName" />
+		<result property="projectName" column="llrId" />
+		<result property="partCode" column="partCode" />
+		<result property="partName" column="partName" />
+		<result property="pointName" column="pointName" />
+		<result property="caseDescription" column="caseDescription" />
+		<result property="causeAnalysis" column="causeAnalysis" />
+		<result property="tmpMeasures" column="tmpMeasures" />
+		<result property="longTermMeasure" column="longTermMeasure" />
+		<result property="directive" column="directive" />
+		<result property="isVerify" column="isVerify" />
+		<result property="directorName" column="directorName" />
+		<result property="deptName" column="deptName" />
+		<result property="verifyModeName" column="verifyModeName" />
+		<result property="typeName" column="typeName" />
+		<result property="targetEffect" column="targetEffect" />
+		<result property="planDate" column="planDate" />
+		<result property="actualDate" column="actualDate" />
+		<collection property="entitys"
+			ofType="com.mozovw.oatmeal.test.llr.tempout.entity.MeTempKnowledgeEntity"
+			resultMap="knowledgeEntitys" />
+	</resultMap>
+	<resultMap id="knowledgeEntitys"
+		type="com.mozovw.oatmeal.test.llr.tempout.entity.MeTempKnowledgeEntity">
+		<result property="docType" column="docType" />
+		<result property="docName" column="docName" />
+		<result property="docCode" column="docCode" />
+		<result property="outputModeName" column="outputModeName" />
+		<result property="content" column="content" />
+		<result property="vDirectorName" column="vDirectorName" />
+		<result property="planCompletionTime" column="planCompletionTime" />
+		<result property="actualCompletionTime" column="actualCompletionTime" />
+	</resultMap>
+
+</mapper>

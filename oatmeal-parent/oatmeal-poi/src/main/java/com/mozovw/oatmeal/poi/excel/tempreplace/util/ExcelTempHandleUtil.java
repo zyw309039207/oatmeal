@@ -5,20 +5,26 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-
-import javax.lang.model.element.VariableElement;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.mozovw.oatmeal.poi.excel.helper.PoiExcelUtil;
 import com.mozovw.oatmeal.poi.excel.tempreplace.entity.ExcelHandleDataVO;
 
+/**
+ * @ClassName: ExcelTempHandleUtil 
+ * @Description:  Excel模板文件内容util类
+ * @author Frank
+ */
 public class ExcelTempHandleUtil {
 	/**
 	 * 替换Excel模板文件内容
@@ -61,6 +67,14 @@ public class ExcelTempHandleUtil {
 		return bool;
 	}
 
+	/**
+	 * @Title: getWorkBook 
+	 * @Description: get 2k3 or 2k7 excel
+	 * @param filePath
+	 * @return Workbook
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
 	private static Workbook getWorkBook(String filePath) throws IOException,
 			FileNotFoundException {
 		Workbook wb;
@@ -82,7 +96,13 @@ public class ExcelTempHandleUtil {
 		}
 		// 写入单元格内容
 		cell.setCellType(cell.getCellType());
-		cell.setCellValue(String.valueOf(value));
+		if (value == null) {
+			cell.setCellValue("");
+		} else {
+			/*System.out.println(data.getRow() + " " + data.getColumn() + "  "
+					+ data.getValue().toString());*/
+			cell.setCellValue(String.valueOf(value));
+		}
 	}
 
 	private static void replaceCell2(Sheet sheet, ExcelHandleDataVO data) {
@@ -96,28 +116,35 @@ public class ExcelTempHandleUtil {
 			ExcelHandleDataVO excelHandleDataVO) {
 		String string = excelHandleDataVO.getKey().toString().trim();
 		int rowCount = sheet.getLastRowNum();
-		for (int i = 0; i < rowCount; i++) {
+
+		for (int i = 0; i <= rowCount; i++) {
 			Row row = sheet.getRow(i);
-			for (int j = 0; j < row.getLastCellNum(); j++) {
+			for (int j = 0; j <= row.getLastCellNum(); j++) {
 				Cell cell = row.getCell(j);
 				if (cell == null)
 					continue;
 				int cellType = cell.getCellType();
 				String key = null;
+				// System.out.println(cellType);
 				switch (cellType) {
 				case Cell.CELL_TYPE_NUMERIC:
+					if (DateUtil.isCellDateFormatted(cell)) {
+						DateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+						Date dataDate = cell.getDateCellValue();
+						key = formater.format(dataDate);
+						break;
+					}
 					key = String.valueOf(cell.getNumericCellValue());
 					key = key.substring(0, key.indexOf("."));
 					break;
 				case Cell.CELL_TYPE_STRING:
 					key = cell.getStringCellValue().trim();
-					;
 					break;
-				case Cell.CELL_TYPE_BLANK:
-					continue;
+				case Cell.CELL_TYPE_FORMULA:
+					key = cell.getCellFormula();
+					break;
 				default:
-
-					break;
+					continue;
 				}
 				if (key.equals(string)) {
 					excelHandleDataVO.setRow(i);
@@ -127,5 +154,4 @@ public class ExcelTempHandleUtil {
 		}
 		return excelHandleDataVO;
 	}
-
 }

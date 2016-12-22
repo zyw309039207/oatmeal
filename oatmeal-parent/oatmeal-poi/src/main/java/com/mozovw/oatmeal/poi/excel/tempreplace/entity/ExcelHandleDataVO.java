@@ -1,7 +1,9 @@
 package com.mozovw.oatmeal.poi.excel.tempreplace.entity;
 
 /**
- * Excel替换内容存储对象
+ * @ClassName: ExcelHandleDataVO 
+ * @Description: Excel替换内容存储对象 
+ * @author Frank
  */
 public class ExcelHandleDataVO {
 	private Integer row;// Excel单元格行
