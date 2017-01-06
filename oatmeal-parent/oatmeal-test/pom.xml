@@ -17,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>oatmeal-common</artifactId>
+			<artifactId>oatmeal-baseframe</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		

@@ -12,6 +12,7 @@
 	<name>oatmeal-poi</name>
 	<url>http://maven.apache.org</url>
 	<properties>
+		<poi.version>3.10-FINAL</poi.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
@@ -19,19 +20,23 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>oatmeal-root</artifactId>
 		</dependency>
+		<!-- poi office begin -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>${poi.version}</version>
 		</dependency>
-
+		<!-- poi office end -->
 		<dependency>
 			<groupId>org.jeecg</groupId>
 			<artifactId>easypoi-base</artifactId>
@@ -77,7 +82,7 @@
 			<version>${poi.version}</version>
 			<optional>true</optional>
 		</dependency>
-		<!-- validation  -->
+		<!-- validation -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
@@ -88,8 +93,8 @@
 			<artifactId>org.apache.bval.bundle</artifactId>
 			<version>1.1.0</version>
 		</dependency>
-	
-		<!-- <dependency>
+		<!-- pdf -->
+		<dependency>
 			<groupId>com.itextpdf</groupId>
 			<artifactId>itextpdf</artifactId>
 			<version>5.5.6</version>
@@ -98,23 +103,13 @@
 			<groupId>com.itextpdf</groupId>
 			<artifactId>itext-asian</artifactId>
 			<version>5.2.0</version>
-		</dependency> -->
-		<!-- <dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>2.2.4</version>
 		</dependency>
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>javax.el</artifactId>
-			<version>2.2.4</version>
-		</dependency> -->
-		<!-- <dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.9.1</version>
-		</dependency> -->
-		
+		<!-- <dependency> <groupId>javax.el</groupId> <artifactId>javax.el-api</artifactId> 
+			<version>2.2.4</version> </dependency> <dependency> <groupId>org.glassfish.web</groupId> 
+			<artifactId>javax.el</artifactId> <version>2.2.4</version> </dependency> -->
+		<!-- <dependency> <groupId>xerces</groupId> <artifactId>xercesImpl</artifactId> 
+			<version>2.9.1</version> </dependency> -->
+
 
 		<!-- <dependency> <groupId>org.apache.xmlbeans</groupId> <artifactId>xmlbeans</artifactId> 
 			<version>2.6.0</version> </dependency> -->

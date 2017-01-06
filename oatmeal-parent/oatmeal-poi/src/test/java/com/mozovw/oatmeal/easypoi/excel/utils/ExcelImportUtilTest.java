@@ -20,7 +20,7 @@ import com.mozovw.oatmeal.root.test.BaseTestCase;
 public class ExcelImportUtilTest extends BaseTestCase {
 
 	@Test
-	public void testImportExcelBySax() {
+	public void test_import_bysax() {
 		try {
 			ImportParams params = new ImportParams();
 			params.setTitleRows(1);
@@ -31,14 +31,14 @@ public class ExcelImportUtilTest extends BaseTestCase {
 											PoiPublicUtil
 													.getWebRootPath("com/mozovw/oatmeal/easypoi/excel/utils/excelimport.xlsx"))),
 							Guy.class, params);
-			showList(list);
+			System.out.println(list);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Test
-	public void testImportExcel() {
+	public void test_import() {
 		try {
 			ImportParams params = new ImportParams();
 			params.setTitleRows(1);
@@ -55,7 +55,7 @@ public class ExcelImportUtilTest extends BaseTestCase {
 	}
 
 	@Test
-	public void testImportExcelVerify() {
+	public void test_verify() {
 		try {
 			ImportParams params = new ImportParams();
 			params.setNeedVerfiy(true);
@@ -68,7 +68,7 @@ public class ExcelImportUtilTest extends BaseTestCase {
 			FileOutputStream fos = new FileOutputStream("src/test/resources/com/mozovw/oatmeal/easypoi/excel/utils/excelverfiy_2.xlsx");
 			result.getWorkbook().write(fos);
 			fos.close();
-			showList(result.getList());
+			System.out.println(result.getList());
 			System.out.println(result.isVerfiyFail());
 			System.out.println(result.getList().size());
 		} catch (Exception e) {

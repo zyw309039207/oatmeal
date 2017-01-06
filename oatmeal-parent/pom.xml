@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mozovw</groupId>
@@ -11,12 +12,14 @@
 	<url>http://maven.apache.org</url>
 
 	<modules>
-		<module>oatmeal-common</module>
+		<module>oatmeal-baseframe</module>
 		<module>oatmeal-jodd</module>
-    <module>oatmeal-poi</module>
-    <module>oatmeal-root</module>
-    <module>oatmeal-test</module>
-  </modules>
+		<module>oatmeal-poi</module>
+		<module>oatmeal-root</module>
+		<module>oatmeal-test</module>
+		<module>oatmeal-commons</module>
+		<module>oatmeal-spring</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,7 +43,7 @@
 		<dependencies>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>oatmeal-common</artifactId>
+				<artifactId>oatmeal-baseframe</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -58,69 +61,16 @@
 				<artifactId>oatmeal-root</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			<!-- spring begin -->
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${pring.version}</version>
+				<groupId>com.mozovw</groupId>
+				<artifactId>oatmeal-spring</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
+				<groupId>com.mozovw</groupId>
+				<artifactId>oatmeal-commons</artifactId>
+				<version>${project.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>commons-logging</groupId>
-						<artifactId>commons-logging</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<!-- spring end -->
 			<!-- mybatis begin -->
 			<dependency>
 				<groupId>org.mybatis</groupId>
@@ -154,96 +104,11 @@
 			</dependency>
 			<!-- connection pool end -->
 
-			<!-- general utils begin -->
-			<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-lang3</artifactId> 
-				<version>${commons-lang3.version}</version> </dependency> <dependency> <groupId>commons-io</groupId> 
-				<artifactId>commons-io</artifactId> <version>${commons-io.version}</version> 
-				</dependency> <dependency> <groupId>commons-codec</groupId> <artifactId>commons-codec</artifactId> 
-				<version>${commons-codec.version}</version> </dependency> <dependency> <groupId>commons-fileupload</groupId> 
-				<artifactId>commons-fileupload</artifactId> <version>${commons-fileupload.version}</version> 
-				</dependency> <dependency> <groupId>commons-beanutils</groupId> <artifactId>commons-beanutils</artifactId> 
-				<version>${commons-beanutils.version}</version> <exclusions> <exclusion> 
-				<groupId>commons-logging</groupId> <artifactId>commons-logging</artifactId> 
-				</exclusion> </exclusions> </dependency> -->
-			<!-- general utils begin -->
-			<!-- log begin -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<!-- common-logging 实际调用slf4j -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>jcl-over-slf4j</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<!-- java.util.logging 实际调用slf4j -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>jul-to-slf4j</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<!-- log end -->
-			<!-- jodd begin -->
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-core</artifactId>
-				<version>${jodd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-mail</artifactId>
-				<version>${jodd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-upload</artifactId>
-				<version>${jodd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-bean</artifactId>
-				<version>${jodd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-log</artifactId>
-				<version>${jodd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-props</artifactId>
-				<version>${jodd.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jodd</groupId>
-				<artifactId>jodd-json</artifactId>
-				<version>${jodd.version}</version>
-			</dependency>
-			<!-- jodd end -->
-			<!-- poi office begin -->
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi</artifactId>
-				<version>${poi.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml</artifactId>
-				<version>${poi.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml-schemas</artifactId>
-				<version>${poi.version}</version>
-			</dependency>
-			<!-- poi office end -->
+			
+			
+			
+			
+			
 		</dependencies>
 
 	</dependencyManagement>

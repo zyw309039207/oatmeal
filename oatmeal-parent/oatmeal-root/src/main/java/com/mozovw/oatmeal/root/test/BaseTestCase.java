@@ -1,15 +1,10 @@
 package com.mozovw.oatmeal.root.test;
 
-import java.util.Collections;
 import java.util.List;
 
-import junit.framework.TestCase;
-
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 public class BaseTestCase {
 	private long startTime;
@@ -34,10 +29,39 @@ public class BaseTestCase {
 	 * @param list
 	 * @return: void
 	 */
+
 	protected void showList(List<Object> list) {
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(ReflectionToStringBuilder.toString(list.get(i)));
+		String string = null ;
+		for (Object object : list) {
+			try {
+				string = String.valueOf(object);
+			} catch (Exception e) {
+				new Exception("type of list do not instanceof string");
+			}
+			System.out.println(string);
 		}
+	}
+
+	protected void showArr(Object[] array) {
+		showArr(array, ",");
+	}
+
+	protected void showArr(Object[] array, String separator) {
+		final int noOfItems = array.length;
+		if (noOfItems <= 0) {
+			return;
+		}
+		final StringBuilder buf = new StringBuilder(noOfItems * 16);
+		for (int i = 0; i < noOfItems; i++) {
+			String string = (String) array[i];
+			if (i > 0) {
+				buf.append(separator);
+			}
+			if (!StringUtils.isEmpty(string)) {
+				buf.append(string);
+			}
+		}
+		System.out.println(buf.toString());
 	}
 
 }
