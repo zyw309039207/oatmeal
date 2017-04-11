@@ -1,5 +1,4 @@
 package com.mozovw.oatmeal.commons.beanutils;
-
 public class Entity {
 
 	private Integer id = 5;

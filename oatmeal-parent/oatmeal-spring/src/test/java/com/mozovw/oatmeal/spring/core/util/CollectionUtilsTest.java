@@ -9,7 +9,6 @@ import java.util.Properties;
 
 import org.junit.Test;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.ObjectUtils;
 
 import com.mozovw.oatmeal.root.test.BaseTestCase;
 

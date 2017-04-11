@@ -21,11 +21,11 @@ import org.apache.commons.lang3.time.DateUtils;
  */
 public class DateTools {
 	private final static String DATE_FORMAT = "yyyy-MM-dd";
-	private final static String DATE_FORMAT_CN = "yyyy年MM月dd日";
+	//private final static String DATE_FORMAT_CN = "yyyy年MM月dd日";
 	private final static String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-	private final static String TIME_FORMAT_CN = "yyyy年MM月dd日 HH:mm:ss";
+	//private final static String TIME_FORMAT_CN = "yyyy年MM月dd日 HH:mm:ss";
 	private final static String MONTH_FORMAT = "yyyy-MM";
-	private final static String DAY_FORMAT = "yyyyMMdd";
+	//private final static String DAY_FORMAT = "yyyyMMdd";
 
 	/**
 	 * @Title:getMonthFirstDay

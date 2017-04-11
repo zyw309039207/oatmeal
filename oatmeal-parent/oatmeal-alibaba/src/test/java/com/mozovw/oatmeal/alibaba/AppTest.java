@@ -1,4 +1,4 @@
-package com.mozovw.oatmeal.commons;
+package com.mozovw.oatmeal.alibaba;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -5,7 +5,7 @@ import com.mozovw.oatmeal.commons.CommonsUtils;
 public class FindClassTest {
 
 	public static void main(String[] args) {
-		CommonsUtils.searchMothodFromClasses("sear");
+		CommonsUtils.searchMothodFromClasses("");
 	}
 
 }

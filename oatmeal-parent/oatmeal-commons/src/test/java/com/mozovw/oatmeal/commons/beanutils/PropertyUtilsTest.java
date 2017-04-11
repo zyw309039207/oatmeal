@@ -26,7 +26,7 @@ public class PropertyUtilsTest extends BaseTestCase {
 		System.out.println("name = " + entity.getName());
 
 		// 通过PropertyUtils的describe方法把entity的所有属性与属性值封装进Map中
-		Map map = PropertyUtils.describe(entity);
+		Map<String, Object> map = PropertyUtils.describe(entity);
 		System.out.println("id = " + map.get("id") + "  name = "
 				+ map.get("name"));
 
@@ -43,5 +43,10 @@ public class PropertyUtilsTest extends BaseTestCase {
 		System.out.println(msg);
 
 	}
+	
 
 }
+
+
+
+
